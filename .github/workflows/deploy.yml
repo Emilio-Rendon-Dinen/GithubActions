@@ -11,11 +11,10 @@ jobs:
         run: echo "Hola mundo"
 
   second_job:
-    if: false
     needs: first_job
     runs-on: ubuntu-latest
 
     steps:
       - name: Hola mundo 2
-        run: echo "Hola mundo 2"
+        run: echo "Hola mundo ${{ github.ref}} "
 
