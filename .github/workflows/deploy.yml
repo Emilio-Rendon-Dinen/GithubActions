@@ -3,10 +3,10 @@ name: Practica de deploy 2
 on: [push, pull_request]
 
 jobs:
-first_job:
-  runs-on: ubuntu-latest
+  first_job:
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Hola mundo
-      run: echo "Hola mundo"
+    steps:
+      - name: Hola mundo
+        run: echo "Hola mundo"
 
