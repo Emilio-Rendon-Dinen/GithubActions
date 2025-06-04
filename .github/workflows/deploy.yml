@@ -6,28 +6,45 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
 
-    env:
-      NAME: codigoFacilito
+    steps:
+      - name: Working dir
+        id: Working_id
+        run: echo "my_variable=Hola MUNDO" >> $GITHUB_OUTPUT
 
     steps:
-      - name: Step 1
-        run: echo "Variable del entorno $NAME"
+      - name: Working dir2
+        run: echo "${{ steps.Working_id.my_variable}}"
 
-      - name: step 1.1
-        run: ls -al
-
-      - name: Action
-        uses: actions/checkout@v4
-
-      - name: step 1.2
-        run: ls -al
 
   second_job:
-    if: ${{ github.ref  == 'refs/heads/main'}} 
     needs: first_job
     runs-on: ubuntu-latest
 
+    env:
+      NAME: codigoFacilito
+    
+    outputs:
+      nombre: $NAME
+
     steps:
-      - name: Step 2
+      - name: second_job Step 1
+        run: echo "Variable del entorno $NAME"
+
+      - name: second_job step 1.1
+        run: ls -al
+
+      - name: second_job Action
+        uses: actions/checkout@v4
+
+      - name: second_job step 1.2
+        run: ls -al
+
+  third_job:
+    if: ${{ github.ref  == 'refs/heads/main'}} 
+    needs: second_job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: third_job Step 1
         run: echo "Entro al if"
 
