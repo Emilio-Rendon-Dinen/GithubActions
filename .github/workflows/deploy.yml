@@ -14,13 +14,13 @@ jobs:
         run: echo "Variable del entorno $NAME"
 
       - name: step 1.1
-        uses: ls -al
+        run: ls -al
 
       - name: Action
         uses: actions/checkout@v4
 
       - name: step 1.2
-        uses: ls -al
+        run: ls -al
 
   second_job:
     if: ${{ github.ref  == 'refs/heads/main'}} 
