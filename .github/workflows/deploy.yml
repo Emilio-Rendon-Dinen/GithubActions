@@ -10,8 +10,17 @@ jobs:
       NAME: codigoFacilito
 
     steps:
-      - name: Hola mundo
-        run: echo "Hola $NAME"
+      - name: Step 1
+        run: echo "Variable del entorno $NAME"
+
+      - name: step 1.1
+        uses: ls -al
+
+      - name: Action
+        uses: actions/checkout@v4
+
+      - name: step 1.2
+        uses: ls -al
 
   second_job:
     if: ${{ github.ref  == 'refs/heads/main'}} 
@@ -19,6 +28,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Hola mundo 2
+      - name: Step 2
         run: echo "Entro al if"
 
