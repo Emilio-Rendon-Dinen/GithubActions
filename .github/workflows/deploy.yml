@@ -10,8 +10,7 @@ jobs:
       - name: Working_dir
         id: Working_id
         run: echo "my_variable=Hola MUNDO" >> $GITHUB_OUTPUT
-
-    steps:
+        
       - name: Working_dir_2
         run: echo "${{ steps.Working_id.my_variable}}"
 
